@@ -1,0 +1,32 @@
+# Polinomios de Taylor
+
+### EJERCICIO 1.- 
+### Dada la función $f(x) = cos(x) + sin(x)$, se pide:
+
+### (i) Halla su polinomio de Taylor de orden 5 centrado en $x_0=0$.
+
+### (ii) Representa gráficamente la función $f(x)$ y el polinomio anterior.
+
+### (iii) Calcula una aproximación de $\cos (0.1) + \sin (0.1)$ utilizando el polinomio anterior.
+
+### (iv) Da una cota superior del error absoluto de la aproximación hallada en (iii).
+
+f(x)=cos(x)+sin(x)
+f
+
+P(x)=taylor(f,x,0,5) 
+P(x)
+
+plot(f,(x,-3,3),color='red')+plot(P,(x,-3,3))
+
+plot(f,(x,-3,3),legend_label='$y=f(x)$',color='red')+plot(P,(x,-3,3),legend_label='$y=P(x)$')
+
+aprox=P(0.1); 
+aprox
+
+cota=2.0*0.1^(6)/factorial(6); 
+cota
+
+error=abs(f(0.1)-P(0.1))
+error
+error.n() < cota.n()
