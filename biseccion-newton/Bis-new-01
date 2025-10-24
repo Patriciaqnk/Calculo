@@ -1,0 +1,93 @@
+# Métodos de bisección y Newton
+
+### Ejercicio 1.
+### Dada la ecuación
+### $$\tan(x)= \frac{1}{x-1}$$
+### se pide:
+
+### a) Prepara la ecuación, localiza y separa gráficamente sus dos soluciones negativas más cercanas a $x=0$ en intervalos de anchura $0.5$.
+
+### b) Realiza manualmente dos pasos del método de bisección para aproximar la solución negativa más cercana a $x=0$.
+
+### c) Calcula aproximadamente las soluciones indicadas en el apartado (a) mediante el método de bisección, con error absoluto menor que $10^{-8}$. 
+plot(tan(x)-1/(x-1),-5,5) 
+Realmente, la función que debemos dibujar es aquella que podemos transformar de la siguiente manera
+
+$$\tan(x) - \dfrac{1}{x-1}=0$$
+
+$$\tan(x)=\dfrac{1}{x-1}$$
+
+$$\dfrac{\sin(x)}{\cos(x)}=\dfrac{1}{x-1}$$
+
+$$\sin(x)(x-1)=\cos(x)$$
+
+$$\sin(x)(x-1)-\cos(x)=0$$ 
+
+$$f(x)=\sin(x)(x-1)-\cos(x)$$.
+f(x)=sin(x)*(x-1)-cos(x)
+f
+plot(f,-4,0)
+plot(f,-0.75,-0.25) 
+#La representación cercana a la solución -0.5 y de intervalo (-0.75,-0.25)
+plot(f,-3.5,-3)
+#La representación cercana a la solución -3.5 y de intervalo (-3.5,-3)
+#Calculamos el punto medio de[a,b] para solución cercana a -0.5. 
+#En b) se pide la solución más cercana a x=0 que es la más cercana a -0.5.
+#El intervalo que tomamos inicialmente es el que observamos en a).
+a=-0.75
+b=-0.25
+a0=a
+b0=b
+c0=(a0+b0)/2;c0
+f(a0),f(c0),f(b0)
+a1=a0
+b1=c0
+c1=(a1+b1)/2;c1
+f(a1),f(c1),f(b1)
+a2=c1
+b2=b1
+c2=(a2+b2)/2;c2
+f(c2)
+a=-0.75
+b=-0.25
+epsilon=10^(-8)
+numerical_approx(log((b-a)/epsilon)/log(2)-1)
+a,b
+contador=0
+N=25
+a0=a
+b0=b
+c0=(b0+a0)/2
+while not f(c0)==0 and contador<N:
+    if f(a0)*f(c0)<0:
+        b0=c0
+        c0=(b0+a0)/2  
+    else:
+        a0=c0
+        c0=(b0+a0)/2
+    contador=contador+1
+c0
+show(contador)
+show(f(c0))
+show(c0)
+show(find_root(f(x),a,b))
+abs(c0-find_root(f(x),a,b)) < 10^(-8)
+a=-3.5
+b=-3
+epsilon=10^(-8)
+numerical_approx(log((b-a)/epsilon)/log(2)-1)
+a,b
+contador=0
+N=25
+a0=a
+b0=b
+c0=(b0+a0)/2
+while not f(c0)==0 and contador<N:
+    if f(a0)*f(c0)<0:
+        b0=c0
+        c0=(b0+a0)/2  
+    else:
+        a0=c0
+        c0=(b0+a0)/2
+    contador=contador+1
+c0
